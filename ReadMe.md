@@ -13,6 +13,7 @@ This repository used for docker related contents.
 To check docker setup correctly. Run hello-world container, output should look like:
 
 \> docker run hello-world
+
 Unable to find image 'hello-world:latest' locally
 latest: Pulling from library/hello-world
 1b930d010525: Pull complete
