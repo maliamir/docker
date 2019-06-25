@@ -1,0 +1,18 @@
+FROM cassandra:3
+RUN apt-get -y update && apt-get install -y wget build-essential zlib1g-dev libffi-dev netcat
+
+RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+RUN mkdir python_setup && tar -xvf Python-3.7.3.tgz -C python_setup
+RUN python_setup/Python-3.7.3/configure && make && make install
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py
+RUN pip install flask flask_cors cql cassandra-driver
+
+COPY setup_scripts /shared/setup_scripts
+
+# that should be later use for cassandra data output folder
+VOLUME /shared/cassandra_disc
+
+# Run Cassandra db, setup init script and run python service
+# wait for start cassandra completely
+
+CMD /shared/setup_scripts/services_entrypoint.sh
