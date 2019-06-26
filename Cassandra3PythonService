@@ -16,9 +16,6 @@ RUN wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz \
 	
 COPY setup_scripts /shared/setup_scripts
 
-# that should be later use for cassandra data output folder
-VOLUME /shared/cassandra_disc
-
 # Run Cassandra db, setup init script and run python service
 
 CMD /shared/setup_scripts/services_entrypoint.sh
