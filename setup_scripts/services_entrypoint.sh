@@ -7,7 +7,8 @@ sh /usr/sbin/cassandra -R -p /var/run/cassandra.pid > cassandra.out
 
 echo "Waiting for Cassandra to Up"
 while ! cqlsh -e 'describe cluster' ; do
-    sleep 3
+    sleep 10
+	echo "Checking Cassandra service ..."
 done
 echo "Cassandra services are up !!"
 
